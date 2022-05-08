@@ -1,0 +1,5 @@
+project: rust-bio
+target: banded_aligner
+
+cmds:
+  - cmd: /banded_aligner

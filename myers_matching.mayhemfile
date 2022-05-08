@@ -1,0 +1,5 @@
+project: rust-bio
+target: myers_matching
+
+cmds:
+  - cmd: /myers_matching
