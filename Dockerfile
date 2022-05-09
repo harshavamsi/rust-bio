@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as builder
+FROM arm64v8/ubuntu:20.04 as builder
 
 ## Install build dependencies.
 RUN apt-get update && \
@@ -15,9 +15,9 @@ WORKDIR /repo
 RUN cd fuzz && ${HOME}/.cargo/bin/cargo fuzz build
 
 # Package Stage
-FROM ubuntu:20.04
+FROM arm64v8/ubuntu:20.04
 
 
 ## TODO: Change <Path in Builder Stage>
-COPY --from=builder repo/fuzz/target/x86_64-unknown-linux-gnu/release/banded_aligner /
-COPY --from=builder repo/fuzz/target/x86_64-unknown-linux-gnu/release/myers_matching /
+COPY --from=builder repo/fuzz/target/aarch64-unknown-linux-gnu/release/banded_aligner /
+COPY --from=builder repo/fuzz/target/aarch64-unknown-linux-gnu/release/myers_matching /
